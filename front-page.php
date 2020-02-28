@@ -30,14 +30,15 @@ get_header();
 			endif;
 
         endwhile; // End of the loop.
+        /* ------------------------------------ Nouvelle ------------------------------------ */
+        echo "<h2>".category_description(get_category_by_slug("nouvelle"))."</h2>";
 
         // The Query
-        
         $args = array(
             "category_name" => "nouvelle",
-            'posts_per_page' => 3,
-            "orderby" => "date",
-            "order" => "ASc"
+            'posts_per_page' => 3
+            // "orderby" => "date",
+            // "order" => "ASC"
         );
         $query1 = new WP_Query( $args );
         
@@ -45,7 +46,7 @@ get_header();
         while ( $query1->have_posts() ) {
             $query1->the_post();
             echo '<h2>' . get_the_title() . '</h2>';
-            echo '<p>' . get_the_excerpt() . '</p>';
+            echo '<p>' . substr(get_the_excerpt(),0,200) . '</p>';
         }
         
         /* Restore original Post Data 
@@ -58,21 +59,23 @@ get_header();
         
         
         /* The 2nd Query (without global var) */
-        /*
+        $args2 = array(
+            "category_name" => "evenement",
+            "posts_per_page" => 10
+        );
         $query2 = new WP_Query( $args2 );
         
         // The 2nd Loop
         while ( $query2->have_posts() ) {
             $query2->the_post();
-            echo '<li>' . get_the_title( $query2->post->ID ) . '</li>';
+            echo '<h2>' . get_the_title( $query2->post->ID ) . '</h2>';
+            echo '<p>' . substr(get_the_excerpt(),0,200) . '</p>';
         }
         
         // Restore original Post Data
         wp_reset_postdata();
-        */
-		?>
         
-
+		?>
 		</main><!-- #main -->
 	</div><!-- #primary -->
 

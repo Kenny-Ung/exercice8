@@ -10,3 +10,13 @@
  License URI: LICENSE
  Text Domain: underscores
 */
+
+.page {
+    margin: auto 1rem;
+}
+
+h1 {
+    font-size: 2em;
+    margin: 0.67em 0;
+    text-align: center;
+}
