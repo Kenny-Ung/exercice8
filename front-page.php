@@ -35,7 +35,9 @@ get_header();
         
         $args = array(
             "category_name" => "nouvelle",
-            'posts_per_page' => 3
+            'posts_per_page' => 3,
+            "orderby" => "date",
+            "order" => "ASc"
         );
         $query1 = new WP_Query( $args );
         
