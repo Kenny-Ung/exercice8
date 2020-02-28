@@ -34,14 +34,16 @@ get_header();
         // The Query
         
         $args = array(
-            "category_name" => "nouvelle"
+            "category_name" => "nouvelle",
+            'posts_per_page' => 3
         );
         $query1 = new WP_Query( $args );
         
         // The Loop
         while ( $query1->have_posts() ) {
             $query1->the_post();
-            echo '<li>' . get_the_title() . '</li>';
+            echo '<h2>' . get_the_title() . '</h2>';
+            echo '<p>' . get_the_excerpt() . '</p>';
         }
         
         /* Restore original Post Data 
